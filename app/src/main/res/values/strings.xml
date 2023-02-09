@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">NYC</string>
+    <string name="unbookmarked">Unbookmarked</string>
+    <string name="could_not_dial_error">Could not find an app to dial school number, click on school for more details</string>
+    <string name="call_school">Call school</string>
+
+    <!--School Details Fragment-->
+    <string name="sat_details">SAT Details</string>
+    <string name="number_of_test_takers">Number of test takers</string>
+    <string name="math_avg_score">Math avg score</string>
+    <string name="critical_reading_avg_score">Critical reading avg score</string>
+    <string name="writing_avg_score">Writing avg score</string>
+    <string name="general_details">General details</string>
+    <string name="school_overview">School overview</string>
+    <string name="language_classes">Language classes</string>
+    <string name="location">Location</string>
+    <string name="contact_details">Contact details</string>
+    <string name="phone_number">Phone number</string>
+    <string name="website">Website</string>
+    <string name="email">Email</string>
+    <string name="nyc_high_schools">NYC High Schools</string>
+</resources>
