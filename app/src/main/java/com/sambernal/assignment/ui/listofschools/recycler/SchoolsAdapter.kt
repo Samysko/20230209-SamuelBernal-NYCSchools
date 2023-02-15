@@ -13,11 +13,20 @@ import com.sambernal.assigment.R
 import com.sambernal.assigment.databinding.ItemSchoolBinding
 import com.sambernal.assignment.data.model.School
 
-class SchoolsAdapter(private val listOfSchools: List<School>, private val clickListener: (School) -> Unit) :
+class SchoolsAdapter(
+    private val listOfSchools: List<School>,
+    private val clickListener: (School) -> Unit
+) :
     RecyclerView.Adapter<SchoolsAdapter.SchoolsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SchoolsViewHolder {
-        return SchoolsViewHolder(ItemSchoolBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return SchoolsViewHolder(
+            ItemSchoolBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: SchoolsViewHolder, position: Int) {
@@ -28,7 +37,8 @@ class SchoolsAdapter(private val listOfSchools: List<School>, private val clickL
         return listOfSchools.size
     }
 
-    inner class SchoolsViewHolder(private val binding: ItemSchoolBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class SchoolsViewHolder(private val binding: ItemSchoolBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(school: School, clickListener: (School) -> Unit) {
             with(binding) {
@@ -47,7 +57,7 @@ class SchoolsAdapter(private val listOfSchools: List<School>, private val clickL
             }
         }
 
-        fun phoneButtonLogicSetUp(phoneNumber: String) {
+        private fun phoneButtonLogicSetUp(phoneNumber: String) {
             binding.imageButtonPhone.setOnClickListener {
                 val callIntent = Intent(Intent.ACTION_DIAL).apply {
                     data = Uri.parse("tel:${phoneNumber}")

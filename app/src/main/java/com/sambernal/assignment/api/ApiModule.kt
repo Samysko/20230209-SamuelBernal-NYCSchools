@@ -1,11 +1,12 @@
 package com.sambernal.assignment.api
 
-import com.google.gson.Gson
+import com.sambernal.assignment.api.di.IoDispatcher
 import com.sambernal.assignment.data.SchoolsRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.CoroutineDispatcher
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -48,9 +49,14 @@ object ApiModule {
 
     @Singleton
     @Provides
-    fun provideApiService(retrofit: Retrofit): SchoolsApiService = retrofit.create(SchoolsApiService::class.java)
+    fun provideApiService(retrofit: Retrofit): SchoolsApiService =
+        retrofit.create(SchoolsApiService::class.java)
 
     @Singleton
     @Provides
-    fun providesRepository(apiService: SchoolsApiService) = SchoolsRepository(apiService)
+    fun providesSchoolRepository(
+        apiService: SchoolsApiService,
+        @IoDispatcher dispatcher: CoroutineDispatcher
+    ) =
+        SchoolsRepository(apiService, dispatcher)
 }
